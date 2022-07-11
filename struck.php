@@ -18,15 +18,15 @@ use WebPConvert\WebPConvert;
 //add_filter( 'wp_get_attachment_image_src', 'convert_images_to_webp', 10, 4 );
 
 function createWebPImage() {
-    $im = @imagecreatefromjpeg($imgname);
+    $im = @imagecreatefromjpeg( $imgname );
 
     if ( !$im ) {
-        $im  = imagecreatetruecolor(150, 30);
-        $bgc = imagecolorallocate($im, 255, 255, 255);
-        $tc  = imagecolorallocate($im, 0, 0, 0);
+        $im  = imagecreatetruecolor( 150, 30 );
+        $bgc = imagecolorallocate( $im, 255, 255, 255 );
+        $tc  = imagecolorallocate( $im, 0, 0, 0 );
 
-        imagefilledrectangle($im, 0, 0, 150, 30, $bgc);
-        imagestring($im, 1, 5, 5, 'Error loading ' . $imgname, $tc);
+        imagefilledrectangle( $im, 0, 0, 150, 30, $bgc );
+        imagestring( $im, 1, 5, 5, 'Error loading ' . $imgname, $tc );
     }
 
     return $im;
