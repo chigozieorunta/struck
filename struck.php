@@ -14,7 +14,7 @@ require 'vendor/autoload.php';
 
 use WebPConvert\WebPConvert;
 
-add_action( 'init', 'convert_all_images_to_webp' );
+//add_action( 'init', 'convert_all_images_to_webp' );
 //add_filter( 'wp_get_attachment_image_src', 'convert_images_to_webp', 10, 4 );
 
 function convert_images_to_webp( $image, $attachment_id, $size, $icon ) {
@@ -23,19 +23,21 @@ function convert_images_to_webp( $image, $attachment_id, $size, $icon ) {
 	$options     = array(
 		'fail'                 => 'original',
 		'fail-when-fail-fails' => 'throw',
-		'reconvert' => false,
-		'serve-original' => false,
-		'show-report' => false,
-		'suppress-warnings' => true,
+		'reconvert'            => false,
+		'serve-original'       => false,
+		'show-report'          => false,
+		'suppress-warnings'    => true,
+
 		'redirect-to-self-instead-of-serving' => false,
+
 		'serve-image' => [
 			'headers' => [
-				'cache-control' => false,
+				'cache-control'  => false,
 				'content-length' => true,
-				'content-type' => true,
-				'expires' => false,
-				'last-modified' => true,
-				'vary-accept' => false
+				'content-type'   => true,
+				'expires'        => false,
+				'last-modified'  => true,
+				'vary-accept'    => false
 			],
 			'cache-control-header' => 'public, max-age=31536000',
 		],
